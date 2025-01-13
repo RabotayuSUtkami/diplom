@@ -266,5 +266,11 @@ namespace iLearning
             }
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.flag = false;
+            this.Close();
+        }
     }
 }

@@ -74,6 +74,8 @@ namespace iLearning
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Program.flag = true;
+
             string query = "SELECT COUNT(*) FROM " + Program.courseName;          
             OleDbCommand command = new OleDbCommand(query, myConnection);
             string i = command.ExecuteScalar().ToString();
@@ -90,6 +92,11 @@ namespace iLearning
 
             for (int j = 1; j <= Convert.ToInt32(i); j++)
             {
+
+                if (Program.flag == false)
+                    break;
+
+
                 Program.cod = j;
                 /*string query01 = "UPDATE processing SET val = " + j + " WHERE field = 'cod'";
                 OleDbCommand command01 = new OleDbCommand(query01, myConnection);

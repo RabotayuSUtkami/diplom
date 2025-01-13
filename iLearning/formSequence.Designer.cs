@@ -41,6 +41,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.question = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,7 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ask1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ask1.Location = new System.Drawing.Point(20, 20);
-            this.ask1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.ask1.Margin = new System.Windows.Forms.Padding(20);
             this.ask1.Multiline = true;
             this.ask1.Name = "ask1";
             this.ask1.ReadOnly = true;
@@ -72,7 +74,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ask2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ask2.Location = new System.Drawing.Point(20, 114);
-            this.ask2.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.ask2.Margin = new System.Windows.Forms.Padding(20);
             this.ask2.Multiline = true;
             this.ask2.Name = "ask2";
             this.ask2.ReadOnly = true;
@@ -89,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ask3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ask3.Location = new System.Drawing.Point(20, 208);
-            this.ask3.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.ask3.Margin = new System.Windows.Forms.Padding(20);
             this.ask3.Multiline = true;
             this.ask3.Name = "ask3";
             this.ask3.ReadOnly = true;
@@ -106,7 +108,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ask4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ask4.Location = new System.Drawing.Point(20, 302);
-            this.ask4.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.ask4.Margin = new System.Windows.Forms.Padding(20);
             this.ask4.Multiline = true;
             this.ask4.Name = "ask4";
             this.ask4.ReadOnly = true;
@@ -123,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.answer4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answer4.Location = new System.Drawing.Point(422, 302);
-            this.answer4.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.answer4.Margin = new System.Windows.Forms.Padding(20);
             this.answer4.Multiline = true;
             this.answer4.Name = "answer4";
             this.answer4.ReadOnly = true;
@@ -140,7 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.answer3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answer3.Location = new System.Drawing.Point(422, 208);
-            this.answer3.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.answer3.Margin = new System.Windows.Forms.Padding(20);
             this.answer3.Multiline = true;
             this.answer3.Name = "answer3";
             this.answer3.ReadOnly = true;
@@ -157,7 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.answer2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answer2.Location = new System.Drawing.Point(422, 114);
-            this.answer2.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.answer2.Margin = new System.Windows.Forms.Padding(20);
             this.answer2.Multiline = true;
             this.answer2.Name = "answer2";
             this.answer2.ReadOnly = true;
@@ -174,7 +176,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.answer1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.answer1.Location = new System.Drawing.Point(422, 20);
-            this.answer1.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.answer1.Margin = new System.Windows.Forms.Padding(20);
             this.answer1.Multiline = true;
             this.answer1.Name = "answer1";
             this.answer1.ReadOnly = true;
@@ -189,7 +191,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(-1, 159);
+            this.panel1.Location = new System.Drawing.Point(-1, 214);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(804, 378);
             this.panel1.TabIndex = 9;
@@ -209,7 +211,7 @@
             this.tableLayoutPanel1.Controls.Add(this.ask2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -258,11 +260,38 @@
             this.question.Text = "Вопрос:  а б в г д е ж з и к л н м н о";
             this.question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.LightGray;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button2.Location = new System.Drawing.Point(0, 592);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 50);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Выход";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.LightGray;
+            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button1.Location = new System.Drawing.Point(660, 593);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 50);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "→";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // formSequence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 530);
+            this.ClientSize = new System.Drawing.Size(800, 640);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "formSequence";
@@ -293,5 +322,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label question;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

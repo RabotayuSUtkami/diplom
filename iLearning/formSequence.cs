@@ -8,6 +8,7 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -109,16 +110,9 @@ namespace iLearning
                 { 2, askvar2},
                 { 3, askvar3},
                 { 4, askvar4},
-            };
+            };            
 
-            map2 = new Dictionary<int, string>(){
-                { 1, answvar1},
-                { 2, answvar2},
-                { 3, answvar3},
-                { 4, answvar4},
-            };
-
-            /*int count = 0;
+            int count = 0;
             int[] mas = new int[4];
             Random rnd = new Random();
             for (int i = 0; i < 4; i++)
@@ -136,14 +130,41 @@ namespace iLearning
                     }
                 }
             }
-*/
-
-
 
             ask1.Text = map[mas[0]];
             ask2.Text = map[mas[1]];
             ask3.Text = map[mas[2]];
             ask4.Text = map[mas[3]];
+
+
+            Thread.Sleep(15);   // для другой случайности 2 массива
+
+
+            map2 = new Dictionary<int, string>(){
+                { 1, answvar1},
+                { 2, answvar2},
+                { 3, answvar3},
+                { 4, answvar4},
+            };
+
+            int count2 = 0;
+            int[] mas2 = new int[4];
+            Random rnd2 = new Random();
+            for (int i = 0; i < 4; i++)
+            {
+                int a2 = rnd2.Next(1, 5);
+                for (int j = 0; j < 4; j++)
+                {
+                    if (a2 != mas2[j])
+                        count2++;
+                    else { i--; break; }
+                    if (count2 == 4)
+                    {
+                        mas2[i] = a2;
+                        count2 = 0;
+                    }
+                }
+            }
 
             answer1.Text = map2[mas2[0]];
             answer2.Text = map2[mas2[1]];
@@ -310,6 +331,12 @@ namespace iLearning
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.flag = false;
+            this.Close();
         }
     }
 }
