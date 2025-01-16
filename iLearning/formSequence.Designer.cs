@@ -65,7 +65,6 @@
             this.ask1.Tag = "ask";
             this.ask1.Text = "1 вариант ответа";
             this.ask1.Click += new System.EventHandler(this.textBox1_Click);
-            this.ask1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             // 
             // ask2
             // 
@@ -220,7 +219,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(804, 378);
             this.tableLayoutPanel1.TabIndex = 9;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            
             // 
             // panel2
             // 
@@ -284,6 +283,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "→";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // formSequence
             // 
@@ -297,7 +297,6 @@
             this.Name = "formSequence";
             this.Text = "formSequence";
             this.Load += new System.EventHandler(this.formSequence_Load);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formSequence_MouseMove);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

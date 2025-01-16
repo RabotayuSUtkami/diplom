@@ -20,7 +20,7 @@ namespace iLearning
         public static string connectString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb;";
         private OleDbConnection myConnection;
 
-
+        bool trueFlag = false;
         bool flag = false;
         TextBox txb;
         TextBox pretxb;
@@ -37,6 +37,9 @@ namespace iLearning
 
         List<int> colors = new List<int>();
 
+
+        int[] mas1;
+        int[] mas2;
         public formSequence()
         {
             InitializeComponent();
@@ -59,8 +62,6 @@ namespace iLearning
         private void formSequence_Load(object sender, EventArgs e)
         {
             sysColor = ask1.BackColor;
-
-            //sysColor = Color.LightGray;
 
             Dictionary<int, string> map = new Dictionary<int, string>();
             Dictionary<int, string> map2 = new Dictionary<int, string>();
@@ -113,28 +114,23 @@ namespace iLearning
             };            
 
             int count = 0;
-            int[] mas = new int[4];
+            mas1 = new int[4];
             Random rnd = new Random();
             for (int i = 0; i < 4; i++)
             {
                 int a = rnd.Next(1, 5);
                 for (int j = 0; j < 4; j++)
                 {
-                    if (a != mas[j])
+                    if (a != mas1[j])
                         count++;
                     else { i--; break; }
                     if (count == 4)
                     {
-                        mas[i] = a;
+                        mas1[i] = a;
                         count = 0;
                     }
                 }
             }
-
-            ask1.Text = map[mas[0]];
-            ask2.Text = map[mas[1]];
-            ask3.Text = map[mas[2]];
-            ask4.Text = map[mas[3]];
 
 
             Thread.Sleep(15);   // для другой случайности 2 массива
@@ -148,7 +144,7 @@ namespace iLearning
             };
 
             int count2 = 0;
-            int[] mas2 = new int[4];
+            mas2 = new int[4];
             Random rnd2 = new Random();
             for (int i = 0; i < 4; i++)
             {
@@ -166,40 +162,16 @@ namespace iLearning
                 }
             }
 
+            ask1.Text = map[mas1[0]];
+            ask2.Text = map[mas1[1]];
+            ask3.Text = map[mas1[2]];
+            ask4.Text = map[mas1[3]];
+
+
             answer1.Text = map2[mas2[0]];
             answer2.Text = map2[mas2[1]];
             answer3.Text = map2[mas2[2]];
             answer4.Text = map2[mas2[3]];
-        }
-
-
-        private void formSequence_MouseMove(object sender, MouseEventArgs e)
-        {
-           /* if (flag)
-            {
-                txb.Location = new Point(e.X - txb.Width / 2, e.Y - txb.Height / 2);
-            }         */ 
-        }
-
-
-
-        
-        private void textBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-           /* if (!flag)
-            {
-                flag = true;
-                txb = (TextBox)sender;
-            }
-            else
-            {
-                flag = false;
-            }*/
-        }
-
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void getColor(int answer, Color nowColor)
@@ -217,7 +189,11 @@ namespace iLearning
             if (answer == 1)
                 map.Remove(key);
 
-           // Console.WriteLine(color.ToString());
+            
+            if (map.Count == 0) {
+                trueFlag = true;    // Проверка на заполнение всего
+            };
+
 
             if (ask1.BackColor == color && answer == 0)
                 ask1.BackColor = sysColor;
@@ -241,7 +217,6 @@ namespace iLearning
 
         private void processing(object sender, EventArgs e)
         {
-         //   Console.WriteLine("start" + "\n" + "flag = " + flag + "\n" + "tag = " + txb.Tag.ToString() + "\n" + "end" + "\n" + "\n");
 
             if (flag == false && txb.Tag.ToString() == "answer")
             {
@@ -276,13 +251,7 @@ namespace iLearning
         private void textBox1_Click(object sender, EventArgs e)
         {
             txb = (TextBox)sender;
-            processing(sender, e);
-
-            // тэги ask - вопросы  answer - ответы
-            // если нажали, тэг - ответы, флаг 0 -- ничего не делать
-            // если нажали, тэг - вопросы, флаг 0 -- подсветить вопрос цветом
-            // если нажали, тэг - ответы, флаг 1 --подсветить ответо цветом
-            // если нажали, тэг - вопросы, флаг 1 -- убрать цвет с предыдущего, поставить цвет выбранному (pretxb)
+            processing(sender, e);         
            
         }
 
@@ -327,16 +296,75 @@ namespace iLearning
             txb = (TextBox)sender;
             processing(sender, e);
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+               
 
         private void button2_Click(object sender, EventArgs e)
         {
             Program.flag = false;
             this.Close();
         }
+
+        private int Checking() {
+                
+            Color[] colors1;
+            colors1 = new Color[4];
+
+            Color[] colors2;
+            colors2 = new Color[4];
+
+            colors1[0] = ask1.BackColor;
+            colors1[1] = ask2.BackColor;
+            colors1[2] = ask3.BackColor;
+            colors1[3] = ask4.BackColor;
+
+            colors2[0] = answer1.BackColor;
+            colors2[1] = answer2.BackColor;
+            colors2[2] = answer3.BackColor;
+            colors2[3] = answer4.BackColor;
+
+            int points = 0;
+            for (int i = 1; i <= 4; i++)
+            {
+                if (colors1[Array.IndexOf(mas1, i)] == colors2[Array.IndexOf(mas2, i)])
+                    points++;
+            }
+            if (points > 3)
+                return 1;
+            else return 0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string query2 = "SELECT val FROM processing WHERE field = 'solved'";
+            OleDbCommand command2 = new OleDbCommand(query2, myConnection);
+            string trueCount = command2.ExecuteScalar().ToString();
+
+            try
+            {
+                Convert.ToInt32(trueCount);
+            }
+            catch
+            {
+                trueCount = "0";
+            }
+
+
+            if (trueFlag)
+            {
+                int a = Checking();
+
+                if (a == 1)
+                {
+                    int newTrueCount = Convert.ToInt32(trueCount);
+                    newTrueCount++;
+
+                    string query0 = "UPDATE processing SET val = " + newTrueCount + " WHERE field = 'solved'";
+                    OleDbCommand command0 = new OleDbCommand(query0, myConnection);
+                    command0.ExecuteNonQuery();
+                }                            
+            }
+            this.Close();
+        }               
     }
 }
