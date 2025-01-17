@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -16,10 +17,9 @@ namespace iLearning
 {
     public partial class formChoice : Form
     {
+        public static string dbConnectionString = @"Data Source=Database.db;Version=3;New=False;Compress=True;";
+        System.Data.SQLite.SQLiteConnection sqliteCon = new System.Data.SQLite.SQLiteConnection(dbConnectionString);
 
-
-        public static string connectString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Database.mdb;";
-        private OleDbConnection myConnection;
 
         bool flag = false;
         bool trueFlag;
@@ -31,8 +31,7 @@ namespace iLearning
         {
             InitializeComponent();
 
-            myConnection = new OleDbConnection(connectString);
-            myConnection.Open();
+            sqliteCon.Open();      
         }
 
         private void formChoice_Load(object sender, EventArgs e)
@@ -42,26 +41,28 @@ namespace iLearning
             Dictionary<int, string> map = new Dictionary<int, string>();
            
 
-            string query0 = "SELECT question FROM " + Program.courseName + " WHERE Код = " + Program.cod;
-            OleDbCommand command0 = new OleDbCommand(query0, myConnection);
-            question.Text = command0.ExecuteScalar().ToString();
+            string query = "SELECT question, trueanswer, answer1, answer2, answer3 FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
+            SQLiteDataReader reader = command.ExecuteReader();
+          
+            string Trueanswer = "";
+            string Answer1 = "";
+            string Answer2 = "";
+            string Answer3 = "";
 
-              string query1 = "SELECT trueanswer FROM " + Program.courseName + " WHERE Код = " + Program.cod;
-              OleDbCommand command1 = new OleDbCommand(query1, myConnection);
-              string Trueanswer = command1.ExecuteScalar().ToString();
 
-              string query2 = "SELECT answer1 FROM " + Program.courseName + " WHERE Код = " + Program.cod;
-              OleDbCommand command2 = new OleDbCommand(query2, myConnection);
-              string Answer1 = command2.ExecuteScalar().ToString();
 
-              string query3 = "SELECT answer2 FROM " + Program.courseName + " WHERE Код = " + Program.cod;
-              OleDbCommand command3 = new OleDbCommand(query3, myConnection);
-              string Answer2 = command3.ExecuteScalar().ToString();
 
-              string query4 = "SELECT answer3 FROM " + Program.courseName + " WHERE Код = " + Program.cod;
-              OleDbCommand command4 = new OleDbCommand(query4, myConnection);
-              string Answer3 = command4.ExecuteScalar().ToString();
-  
+
+            foreach (DbDataRecord record in reader)
+            {
+                question.Text = record[0].ToString();
+                Trueanswer = record[1].ToString();
+                Answer1 = record[2].ToString();
+                Answer2 = record[3].ToString();
+                Answer3 = record[4].ToString();
+
+            }
 
 
             map = new Dictionary<int, string>(){
@@ -203,14 +204,33 @@ namespace iLearning
 
             string text = btn.Text;
 
-            string query1 = "SELECT trueanswer FROM " + Program.courseName + " WHERE Код = " + Program.cod;
-            OleDbCommand command1 = new OleDbCommand(query1, myConnection);
-            string Trueanswer = command1.ExecuteScalar().ToString();
+
+            string query = "SELECT trueanswer FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            string Trueanswer = "";           
+
+            foreach (DbDataRecord record in reader)
+            {
+                Trueanswer = record[0].ToString();               
+            }
 
 
             string query2 = "SELECT val FROM processing WHERE field = 'solved'";
-            OleDbCommand command2 = new OleDbCommand(query2, myConnection);
-            trueCount = command2.ExecuteScalar().ToString();
+            SQLiteCommand command2 = new SQLiteCommand(query2, sqliteCon);
+            SQLiteDataReader reader2 = command2.ExecuteReader();
+
+            trueCount = "";
+
+            foreach (DbDataRecord record in reader2)
+            {
+                trueCount = record[0].ToString();
+            }
+            
+
+
+
 
             try
             {
@@ -260,9 +280,9 @@ namespace iLearning
                 int newTrueCount = Convert.ToInt32(trueCount);
                 newTrueCount++;
 
-                string query0 = "UPDATE processing SET val = " + newTrueCount + " WHERE field = 'solved'";
-                OleDbCommand command0 = new OleDbCommand(query0, myConnection);
-                command0.ExecuteNonQuery();
+                string updateQuery = "UPDATE processing SET val = " + newTrueCount + " WHERE field = 'solved'";
+                SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
+                command2.ExecuteNonQuery();
             }
             this.Close();
         }
