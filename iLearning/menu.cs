@@ -37,7 +37,9 @@ namespace iLearning
 
         private void menu_Load(object sender, EventArgs e)
         {
-
+            //this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
 
         }
 
@@ -117,6 +119,17 @@ namespace iLearning
 
             }
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            createCourse createCourse = new createCourse();
+            createCourse.ShowDialog();
         }
     }
 }

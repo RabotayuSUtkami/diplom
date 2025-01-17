@@ -30,6 +30,7 @@ namespace iLearning
 
             
         }
+        public static string user = "";
         public static string courseName = "csharp"; //  название курса для бд
         public static bool flag = false;    // флаг для остановки задач
         public static int cod = 0;  // код для вопроса и ответов для бд(formSequence)
