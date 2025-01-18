@@ -143,6 +143,7 @@
             this.Controls.Add(this.courseName);
             this.Name = "createCourse";
             this.Text = "createCourse";
+            this.Load += new System.EventHandler(this.createCourse_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

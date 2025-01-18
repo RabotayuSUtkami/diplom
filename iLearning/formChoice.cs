@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace iLearning
@@ -104,8 +105,7 @@ namespace iLearning
 
             if (flag == false)
             {
-                btn.Size = new System.Drawing.Size(btn.Width + 10, btn.Height + 10);
-                btn.Location = new Point(btn.Location.X - 5, btn.Location.Y - 5);
+                btn.Margin = new Padding(10, 10, 10, 10);             
             }
             flag = true;
         }
@@ -117,8 +117,7 @@ namespace iLearning
 
             if (flag == true)
             {
-                btn.Size = new System.Drawing.Size(btn.Width - 10, btn.Height - 10);
-                btn.Location = new Point(btn.Location.X + 5, btn.Location.Y + 5);
+                btn.Margin = new Padding(20, 20, 20, 20); 
             }
             flag = false;
         }

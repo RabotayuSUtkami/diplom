@@ -71,10 +71,21 @@ namespace iLearning
                 SQLiteCommand command0 = new SQLiteCommand(createTable, sqliteCon);
                 command0.ExecuteNonQuery();
 
+                string createTable2 = "CREATE TABLE 'L_" + courseName.Text + "' (Код INTEGER NOT NULL UNIQUE, type TEXT, text TEXT, PRIMARY KEY(Код))";
+                SQLiteCommand command2 = new SQLiteCommand(createTable2, sqliteCon);
+                command2.ExecuteNonQuery();
+
+                /*string createTable3 = "CREATE TABLE 'U_" + courseName.Text + "' (id TEXT, text TEXT, PRIMARY KEY(Код))";
+                SQLiteCommand command4 = new SQLiteCommand(createTable3, sqliteCon);
+                command4.ExecuteNonQuery();*/
 
                 string insertTable = "INSERT INTO Courses (Course) VALUES ('" + courseName.Text + "')";
                 SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
                 command1.ExecuteNonQuery();
+
+                string updateQuery = "UPDATE users SET course = '" + courseName.Text + "' WHERE id = '" + Program.id + "'";                
+                SQLiteCommand command3 = new SQLiteCommand(updateQuery, sqliteCon);
+                command3.ExecuteNonQuery();
 
                 panel1.Visible = true;
             }
@@ -88,13 +99,10 @@ namespace iLearning
 
         private void buttonAddLection_Click(object sender, EventArgs e)
         {
+            
+            save();
+
             thisTest = false;
-            /*if (count != 0)
-            {
-                string insertTable = "INSERT INTO '" + courseName.Text + "' (Course) VALUES ('" + courseName.Text + "')";
-                SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
-                command1.ExecuteNonQuery();
-            }*/
 
             panel[count] = new Panel();
 
@@ -177,29 +185,10 @@ namespace iLearning
 
         private void buttonAddTest_Click(object sender, EventArgs e)
         {
+
+            save();
+
             thisTest = true;
-
-            if (count != 0 && thisTest == true)
-            {
-               string insertTable="";
-               if (comText == "choice")
-               {
-                   insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer, answer1, answer2, answer3) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "', '" + txtbx2[count - 1].Text + "', '" + txtbx3[count - 1].Text + "', '" + txtbx4[count - 1].Text + "')";
-               }
-               if (comText == "sequence")
-               { 
-                   insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, askvar1, askvar2, askvar3, askvar4, answvar1, answvar2, answvar3, answvar4) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "', '" + txtbx2[count - 1].Text + "', '" + txtbx3[count - 1].Text + "', '" + txtbx4[count - 1].Text + "', '" + txtbx5[count - 1].Text + "', '" + txtbx6[count - 1].Text + "', '" + txtbx7[count - 1].Text + "', '" + txtbx8[count - 1].Text + "')";
-               }
-               if (comText == "text")
-               {
-                   insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "')";
-               }
-
-
-               SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
-               command1.ExecuteNonQuery();
-            }
-
 
             panel[count] = new Panel();
 
@@ -240,6 +229,46 @@ namespace iLearning
             //comBox[count]
         }
 
+
+        public void save()
+        {
+            if (count != 0 && thisTest == true)
+            {
+                string insertTable = "";
+                if (comText == "choice")
+                {
+                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer, answer1, answer2, answer3) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "', '" + txtbx2[count - 1].Text + "', '" + txtbx3[count - 1].Text + "', '" + txtbx4[count - 1].Text + "')";
+                }
+                if (comText == "sequence")
+                {
+                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, askvar1, answvar1, askvar2, answvar2, askvar3, answvar3, askvar4, answvar4) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "', '" + txtbx2[count - 1].Text + "', '" + txtbx3[count - 1].Text + "', '" + txtbx4[count - 1].Text + "', '" + txtbx5[count - 1].Text + "', '" + txtbx6[count - 1].Text + "', '" + txtbx7[count - 1].Text + "', '" + txtbx8[count - 1].Text + "')";
+                }
+                if (comText == "text")
+                {
+                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "')";
+                }
+
+
+                SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
+                command1.ExecuteNonQuery();
+
+
+                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('T', '1')";
+                SQLiteCommand command2 = new SQLiteCommand(insertTable, sqliteCon);
+                command2.ExecuteNonQuery();
+
+            }
+            else if (count != 0 && thisTest == false)
+            {
+                string insertTable = "";
+                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('L', '" + richtextbox[count - 1].Text + "')";
+
+                SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
+                command1.ExecuteNonQuery();
+            }
+
+
+        }
         public void change(object sender, EventArgs e)
         {
             int cod = Convert.ToInt32((sender as System.Windows.Forms.ComboBox).Tag);
@@ -423,6 +452,11 @@ namespace iLearning
 
             y += 250;
             count++;
+        }
+
+        private void createCourse_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

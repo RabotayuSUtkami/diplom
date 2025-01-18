@@ -33,17 +33,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.userID = new System.Windows.Forms.Label();
-            this.userName = new System.Windows.Forms.Label();
             this.userCourse = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.userID = new System.Windows.Forms.Label();
+            this.userName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label5 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.variant2.Name = "variant2";
             this.variant2.Size = new System.Drawing.Size(361, 100);
             this.variant2.TabIndex = 2;
-            this.variant2.Text = "Лекции";
+            this.variant2.Text = "Курс";
             this.variant2.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -113,25 +113,25 @@
             this.panel1.Size = new System.Drawing.Size(436, 131);
             this.panel1.TabIndex = 6;
             // 
-            // label1
+            // userCourse
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.label1.Location = new System.Drawing.Point(49, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Имя";
+            this.userCourse.AutoSize = true;
+            this.userCourse.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.userCourse.Location = new System.Drawing.Point(114, 79);
+            this.userCourse.Name = "userCourse";
+            this.userCourse.Size = new System.Drawing.Size(65, 26);
+            this.userCourse.TabIndex = 5;
+            this.userCourse.Text = "label3";
             // 
-            // label2
+            // label4
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.label2.Location = new System.Drawing.Point(49, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "ID";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.label4.Location = new System.Drawing.Point(49, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 26);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Курс";
             // 
             // userID
             // 
@@ -153,25 +153,25 @@
             this.userName.TabIndex = 2;
             this.userName.Text = "label4";
             // 
-            // userCourse
+            // label2
             // 
-            this.userCourse.AutoSize = true;
-            this.userCourse.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.userCourse.Location = new System.Drawing.Point(114, 79);
-            this.userCourse.Name = "userCourse";
-            this.userCourse.Size = new System.Drawing.Size(65, 26);
-            this.userCourse.TabIndex = 5;
-            this.userCourse.Text = "label3";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.label2.Location = new System.Drawing.Point(49, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 26);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "ID";
             // 
-            // label4
+            // label1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.label4.Location = new System.Drawing.Point(49, 79);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 26);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Курс";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.label1.Location = new System.Drawing.Point(49, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Имя";
             // 
             // button4
             // 
@@ -197,6 +197,24 @@
             this.panel2.Size = new System.Drawing.Size(423, 34);
             this.panel2.TabIndex = 8;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.label5.Location = new System.Drawing.Point(3, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 26);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Прогресс";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(108, 5);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(221, 23);
+            this.progressBar1.TabIndex = 7;
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -208,24 +226,6 @@
             this.label3.Size = new System.Drawing.Size(73, 26);
             this.label3.TabIndex = 6;
             this.label3.Text = "proc %";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(108, 5);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(221, 23);
-            this.progressBar1.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.label5.Location = new System.Drawing.Point(3, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 26);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Прогресс";
             // 
             // menu
             // 

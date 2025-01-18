@@ -16,7 +16,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 using System.Data.SQLite;
 using System.Data.Common;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Remoting.Messaging;
 
+
+
+using System.Linq;
 
 namespace iLearning
 {
@@ -37,9 +45,73 @@ namespace iLearning
 
         private void menu_Load(object sender, EventArgs e)
         {
-            //this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
+            userName.Text = Program.user;
+            userID.Text = Program.id;
+            userCourse.Text = Program.courseName;
+
+
+            string query = "SELECT logs FROM users WHERE id = " + Program.id; 
+            SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
+            SQLiteDataReader reader = command.ExecuteReader();
+            string i = "";
+
+            foreach (DbDataRecord record in reader)
+            {
+                i = record[0].ToString();
+            }
+
+
+            if (i == "")
+            {
+
+                string query0 = "SELECT COUNT(*) FROM " + Program.courseName;
+                SQLiteCommand command0 = new SQLiteCommand(query0, sqliteCon);
+                SQLiteDataReader reader0 = command0.ExecuteReader();
+                int ii = 0;
+                foreach (DbDataRecord record in reader0)
+                {
+                    ii = Convert.ToInt32(record[0].ToString());
+                }
+                List<int> results = new List<int>();
+
+
+                for (int j = 0; j < ii; j++)
+                {
+                    results.Add(0);
+                }
+
+                string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
+                SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
+                command2.ExecuteNonQuery();
+            }
+            else
+            {
+                
+                List<int> list = new List<int>();
+                foreach (string j in i.Split(','))
+                {
+                    list.Add(int.Parse(j));
+                }
+
+                int total = list.Count;
+                int solved = 0;
+                foreach (int j in list)
+                {
+                    if (j == 1)solved++;
+                }
+
+                Program.total = total;
+                Program.solved = solved;
+
+                progressBar1.Value = solved * 100 / total;
+                label3.Text = (solved * 100 / total).ToString() + " %";
+            }
+
+
+            //retrievedData = (byte[])reader["data"];
+
+            // this.FormBorderStyle = FormBorderStyle.None;
+            // this.WindowState = FormWindowState.Maximized;
 
         }
 

@@ -68,6 +68,7 @@
             this.butSignIn.TabIndex = 2;
             this.butSignIn.Text = "Войти";
             this.butSignIn.UseVisualStyleBackColor = true;
+            this.butSignIn.Click += new System.EventHandler(this.butSignIn_Click);
             // 
             // butSignUp
             // 
@@ -80,6 +81,7 @@
             this.butSignUp.TabIndex = 3;
             this.butSignUp.Text = "Зарегистрироваться";
             this.butSignUp.UseVisualStyleBackColor = true;
+            this.butSignUp.Click += new System.EventHandler(this.butSignUp_Click);
             // 
             // panel1
             // 
