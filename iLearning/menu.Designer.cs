@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.variant2 = new System.Windows.Forms.Button();
+            this.buttonCourse = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -48,17 +48,17 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // variant2
+            // buttonCourse
             // 
-            this.variant2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.variant2.Location = new System.Drawing.Point(43, 61);
-            this.variant2.Margin = new System.Windows.Forms.Padding(20);
-            this.variant2.MinimumSize = new System.Drawing.Size(240, 100);
-            this.variant2.Name = "variant2";
-            this.variant2.Size = new System.Drawing.Size(361, 100);
-            this.variant2.TabIndex = 2;
-            this.variant2.Text = "Курс";
-            this.variant2.UseVisualStyleBackColor = true;
+            this.buttonCourse.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.buttonCourse.Location = new System.Drawing.Point(43, 61);
+            this.buttonCourse.Margin = new System.Windows.Forms.Padding(20);
+            this.buttonCourse.MinimumSize = new System.Drawing.Size(240, 100);
+            this.buttonCourse.Name = "buttonCourse";
+            this.buttonCourse.Size = new System.Drawing.Size(361, 100);
+            this.buttonCourse.TabIndex = 2;
+            this.buttonCourse.Text = "Курс";
+            this.buttonCourse.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -184,6 +184,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Журнал";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel2
             // 
@@ -238,7 +239,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.variant2);
+            this.Controls.Add(this.buttonCourse);
             this.Name = "menu";
             this.Text = "menu";
             this.Load += new System.EventHandler(this.menu_Load);
@@ -252,7 +253,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button variant2;
+        private System.Windows.Forms.Button buttonCourse;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

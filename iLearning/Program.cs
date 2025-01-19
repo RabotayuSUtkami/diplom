@@ -27,12 +27,13 @@ namespace iLearning
             //Application.Run(new formSequence());
             //Application.Run(new formChoice());
             Application.Run(new Form1());
+            //Application.Run(new journal());
 
-            
+
         }
         public static string user = "";
         public static string id = "";
-        public static string courseName = "csharp"; //  название курса для бд
+        public static string courseName = ""; //  название курса для бд
         public static bool flag = false;    // флаг для остановки задач
         public static int cod = 0;  // код для вопроса и ответов для бд(formSequence)
         public static int solved = 0;

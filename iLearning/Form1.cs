@@ -111,12 +111,14 @@ namespace iLearning
                     id = record[0].ToString();
                     loginT = record[1].ToString();
                     passT = record[2].ToString();
+                    course = record[3].ToString();
                 }
 
                 if (login.Text != "" && pass.Text != "" && login.Text == loginT && pass.Text == passT)
                 {
                     Program.user = loginT;
                     Program.id = id;
+                    Program.courseName = course;
 
                     menu menu = new menu();
                     menu.Show();
@@ -143,6 +145,7 @@ namespace iLearning
                     id = record[0].ToString();
                     loginT = record[1].ToString();
                     passT = record[2].ToString();
+                    course = record[3].ToString();
                 }
 
                 if (id != "" && id == login.Text)

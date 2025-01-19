@@ -63,26 +63,35 @@ namespace iLearning
 
             if (i == "")
             {
-
-                string query0 = "SELECT COUNT(*) FROM " + Program.courseName;
-                SQLiteCommand command0 = new SQLiteCommand(query0, sqliteCon);
-                SQLiteDataReader reader0 = command0.ExecuteReader();
-                int ii = 0;
-                foreach (DbDataRecord record in reader0)
+                try
                 {
-                    ii = Convert.ToInt32(record[0].ToString());
+
+                    string query0 = "SELECT COUNT(*) FROM " + Program.courseName;
+                    SQLiteCommand command0 = new SQLiteCommand(query0, sqliteCon);
+                    SQLiteDataReader reader0 = command0.ExecuteReader();
+                    int ii = 0;
+                    foreach (DbDataRecord record in reader0)
+                    {
+                        ii = Convert.ToInt32(record[0].ToString());
+                    }
+                    List<int> results = new List<int>();
+
+
+                    for (int j = 0; j < ii; j++)
+                    {
+                        results.Add(0);
+                    }
+
+                    string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
+                    SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
+                    command2.ExecuteNonQuery();
                 }
-                List<int> results = new List<int>();
-
-
-                for (int j = 0; j < ii; j++)
+                catch
                 {
-                    results.Add(0);
+                    button1.Enabled = false;
+                    buttonCourse.Enabled = false;
+                    panel2.Visible = false;
                 }
-
-                string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
-                SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
-                command2.ExecuteNonQuery();
             }
             else
             {
@@ -202,6 +211,12 @@ namespace iLearning
         {
             createCourse createCourse = new createCourse();
             createCourse.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            journal j = new journal();
+            j.ShowDialog();
         }
     }
 }
