@@ -50,8 +50,10 @@
             this.variant1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.variant1.BackColor = System.Drawing.Color.LightGray;
+            this.variant1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.variant1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.variant1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.variant1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.variant1.Location = new System.Drawing.Point(20, 20);
             this.variant1.Margin = new System.Windows.Forms.Padding(20);
             this.variant1.MinimumSize = new System.Drawing.Size(240, 100);
@@ -69,8 +71,10 @@
             this.variant2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.variant2.BackColor = System.Drawing.Color.LightGray;
+            this.variant2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.variant2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.variant2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.variant2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.variant2.Location = new System.Drawing.Point(500, 20);
             this.variant2.Margin = new System.Windows.Forms.Padding(20);
             this.variant2.MinimumSize = new System.Drawing.Size(240, 100);
@@ -88,8 +92,10 @@
             this.variant3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.variant3.BackColor = System.Drawing.Color.LightGray;
+            this.variant3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.variant3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.variant3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.variant3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.variant3.Location = new System.Drawing.Point(20, 151);
             this.variant3.Margin = new System.Windows.Forms.Padding(20);
             this.variant3.MinimumSize = new System.Drawing.Size(240, 100);
@@ -107,8 +113,10 @@
             this.variant4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.variant4.BackColor = System.Drawing.Color.LightGray;
+            this.variant4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.variant4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.variant4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.variant4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.variant4.Location = new System.Drawing.Point(500, 151);
             this.variant4.Margin = new System.Windows.Forms.Padding(20);
             this.variant4.MinimumSize = new System.Drawing.Size(240, 100);
@@ -138,7 +146,7 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(86)))), ((int)(((byte)(56)))));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -192,8 +200,10 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.LightGray;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.button1.Location = new System.Drawing.Point(817, 570);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 50);
@@ -205,8 +215,10 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.LightGray;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.button2.Location = new System.Drawing.Point(-1, 570);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 50);
@@ -219,6 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(86)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(958, 619);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

@@ -61,26 +61,32 @@
             // 
             this.butSignIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.butSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.butSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butSignIn.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.butSignIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.butSignIn.Location = new System.Drawing.Point(65, 183);
             this.butSignIn.Name = "butSignIn";
             this.butSignIn.Size = new System.Drawing.Size(218, 42);
             this.butSignIn.TabIndex = 2;
             this.butSignIn.Text = "Войти";
-            this.butSignIn.UseVisualStyleBackColor = true;
+            this.butSignIn.UseVisualStyleBackColor = false;
             this.butSignIn.Click += new System.EventHandler(this.butSignIn_Click);
             // 
             // butSignUp
             // 
             this.butSignUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.butSignUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.butSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butSignUp.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.butSignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.butSignUp.Location = new System.Drawing.Point(65, 279);
             this.butSignUp.Name = "butSignUp";
             this.butSignUp.Size = new System.Drawing.Size(218, 42);
             this.butSignUp.TabIndex = 3;
             this.butSignUp.Text = "Зарегистрироваться";
-            this.butSignUp.UseVisualStyleBackColor = true;
+            this.butSignUp.UseVisualStyleBackColor = false;
             this.butSignUp.Click += new System.EventHandler(this.butSignUp_Click);
             // 
             // panel1
@@ -95,27 +101,31 @@
             this.panel1.Controls.Add(this.login);
             this.panel1.Location = new System.Drawing.Point(114, 156);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 362);
+            this.panel1.Size = new System.Drawing.Size(368, 368);
             this.panel1.TabIndex = 5;
             // 
             // butCheckBox
             // 
             this.butCheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+            this.butCheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.butCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butCheckBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.butCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.butCheckBox.Location = new System.Drawing.Point(65, 231);
             this.butCheckBox.Name = "butCheckBox";
             this.butCheckBox.Size = new System.Drawing.Size(218, 42);
             this.butCheckBox.TabIndex = 6;
             this.butCheckBox.Text = "Войти по ID";
             this.butCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.butCheckBox.UseVisualStyleBackColor = true;
+            this.butCheckBox.UseVisualStyleBackColor = false;
             this.butCheckBox.CheckedChanged += new System.EventHandler(this.butCheckBox_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 530);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
+            this.ClientSize = new System.Drawing.Size(606, 551);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -61,6 +61,17 @@ namespace iLearning
 
         private void formSequence_Load(object sender, EventArgs e)
         {
+
+            this.FormBorderStyle = FormBorderStyle.None;
+
+            Location = new Point(Program.locX, Program.locY);
+            Width = Program.winWidth;
+            Height = Program.winHeight;
+
+
+
+
+
             sysColor = ask1.BackColor;
 
             Dictionary<int, string> map = new Dictionary<int, string>();
@@ -331,7 +342,7 @@ namespace iLearning
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string query2 = "SELECT val FROM processing WHERE field = 'solved'";
+           /* string query2 = "SELECT val FROM processing WHERE field = 'solved'";
             SQLiteCommand command2 = new SQLiteCommand(query2, sqliteCon);
             SQLiteDataReader reader2 = command2.ExecuteReader();
 
@@ -340,17 +351,17 @@ namespace iLearning
             foreach (DbDataRecord record in reader2)
             {
                 trueCount = record[0].ToString();
-            }
+            }*/
 
 
-            try
+           /* try
             {
                 Convert.ToInt32(trueCount);
             }
             catch
             {
                 trueCount = "0";
-            }
+            }*/
 
 
             if (trueFlag)
@@ -359,12 +370,28 @@ namespace iLearning
 
                 if (a == 1)
                 {
-                    int newTrueCount = Convert.ToInt32(trueCount);
-                    newTrueCount++;
+                    string query3 = "SELECT logs FROM users WHERE id = " + Program.id + " AND course = '" + Program.courseName + "'";
+                    SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
+                    SQLiteDataReader reader3 = command4.ExecuteReader();
 
-                    string updateQuery = "UPDATE processing SET val = " + newTrueCount + " WHERE field = 'solved'";
-                    SQLiteCommand command0 = new SQLiteCommand(updateQuery, sqliteCon);
-                    command0.ExecuteNonQuery();
+                    List<int> results = new List<int>();
+
+
+                    foreach (DbDataRecord record in reader3)
+                    {
+
+                        string stLogs = record[0].ToString();
+
+                        foreach (string j in stLogs.Split(','))
+                        {
+                            results.Add(int.Parse(j));
+                        }
+                    }
+                    results[Program.cod - 1] = 1;
+
+                    string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
+                    SQLiteCommand command3 = new SQLiteCommand(updateQuery, sqliteCon);
+                    command3.ExecuteNonQuery();
                 }     
 
 

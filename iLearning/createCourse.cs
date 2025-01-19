@@ -22,6 +22,7 @@ namespace iLearning
         int x = 30;
         int y = 30;
         int count = 0;
+        int countTest = 1;
 
         bool thisTest = false;
         string comText = "";
@@ -253,9 +254,10 @@ namespace iLearning
                 command1.ExecuteNonQuery();
 
 
-                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('T', '1')";
+                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('T', " + countTest + ")";
                 SQLiteCommand command2 = new SQLiteCommand(insertTable, sqliteCon);
                 command2.ExecuteNonQuery();
+                countTest++;
 
             }
             else if (count != 0 && thisTest == false)
@@ -456,7 +458,16 @@ namespace iLearning
 
         private void createCourse_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
 
+            Location = new Point(Program.locX, Program.locY);
+            Width = Program.winWidth;
+            Height = Program.winHeight;
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

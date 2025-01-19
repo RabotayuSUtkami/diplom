@@ -38,6 +38,12 @@ namespace iLearning
         public static int cod = 0;  // код для вопроса и ответов для бд(formSequence)
         public static int solved = 0;
         public static int total = 0;
+        public static int numLection = 0;
+
+        public static int locX = 0;
+        public static int locY = 0;
+        public static int winWidth = 0;
+        public static int winHeight = 0;
 
     }
     

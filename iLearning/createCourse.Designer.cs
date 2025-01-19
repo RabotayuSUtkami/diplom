@@ -37,7 +37,9 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonCreateCourse = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // courseName
@@ -79,65 +81,92 @@
             // 
             // buttonAddTest
             // 
+            this.buttonAddTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.buttonAddTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddTest.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.buttonAddTest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.buttonAddTest.Location = new System.Drawing.Point(287, 18);
             this.buttonAddTest.Name = "buttonAddTest";
             this.buttonAddTest.Size = new System.Drawing.Size(246, 39);
             this.buttonAddTest.TabIndex = 4;
             this.buttonAddTest.Text = "Добавить тест";
-            this.buttonAddTest.UseVisualStyleBackColor = true;
+            this.buttonAddTest.UseVisualStyleBackColor = false;
             this.buttonAddTest.Click += new System.EventHandler(this.buttonAddTest_Click);
             // 
             // buttonAddLection
             // 
+            this.buttonAddLection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.buttonAddLection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddLection.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.buttonAddLection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.buttonAddLection.Location = new System.Drawing.Point(3, 18);
             this.buttonAddLection.Name = "buttonAddLection";
             this.buttonAddLection.Size = new System.Drawing.Size(246, 39);
             this.buttonAddLection.TabIndex = 3;
             this.buttonAddLection.Text = "Добавить лекцию";
-            this.buttonAddLection.UseVisualStyleBackColor = true;
+            this.buttonAddLection.UseVisualStyleBackColor = false;
             this.buttonAddLection.Click += new System.EventHandler(this.buttonAddLection_Click);
             // 
             // buttonSave
             // 
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.buttonSave.Location = new System.Drawing.Point(333, 572);
+            this.buttonSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
+            this.buttonSave.Location = new System.Drawing.Point(294, 7);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(246, 39);
             this.buttonSave.TabIndex = 6;
             this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.UseVisualStyleBackColor = false;
             // 
             // buttonExit
             // 
+            this.buttonExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.buttonExit.Location = new System.Drawing.Point(49, 572);
+            this.buttonExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
+            this.buttonExit.Location = new System.Drawing.Point(10, 7);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(246, 39);
             this.buttonExit.TabIndex = 5;
             this.buttonExit.Text = "Выйти";
-            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // buttonCreateCourse
             // 
+            this.buttonCreateCourse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.buttonCreateCourse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCreateCourse.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.buttonCreateCourse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.buttonCreateCourse.Location = new System.Drawing.Point(454, 45);
             this.buttonCreateCourse.Name = "buttonCreateCourse";
             this.buttonCreateCourse.Size = new System.Drawing.Size(246, 39);
             this.buttonCreateCourse.TabIndex = 7;
             this.buttonCreateCourse.Text = "Создать курс";
-            this.buttonCreateCourse.UseVisualStyleBackColor = true;
+            this.buttonCreateCourse.UseVisualStyleBackColor = false;
             this.buttonCreateCourse.Click += new System.EventHandler(this.buttonCreateCourse_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.buttonExit);
+            this.panel3.Controls.Add(this.buttonSave);
+            this.panel3.Location = new System.Drawing.Point(46, 563);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(956, 59);
+            this.panel3.TabIndex = 8;
             // 
             // createCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(86)))), ((int)(((byte)(56)))));
             this.ClientSize = new System.Drawing.Size(1043, 623);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.buttonCreateCourse);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.courseName);
@@ -145,6 +174,7 @@
             this.Text = "createCourse";
             this.Load += new System.EventHandler(this.createCourse_Load);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +191,6 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonCreateCourse;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

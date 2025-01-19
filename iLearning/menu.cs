@@ -34,6 +34,8 @@ namespace iLearning
         System.Data.SQLite.SQLiteConnection sqliteCon = new System.Data.SQLite.SQLiteConnection(dbConnectionString);
 
 
+        int numLection = 1;
+        string log = "";
 
         public menu()
         {
@@ -43,25 +45,71 @@ namespace iLearning
 
         }
 
+        private void refresh()
+        {
+            string query = "SELECT logs FROM users WHERE id = " + Program.id;
+            SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
+            SQLiteDataReader reader = command.ExecuteReader();
+            
+
+            foreach (DbDataRecord record in reader)
+            {
+                log = record[0].ToString();
+            }
+
+
+            List<int> list = new List<int>();
+            foreach (string j in log.Split(','))
+            {
+                list.Add(int.Parse(j));
+            }
+
+            int total = list.Count;
+            int solved = 0;
+            foreach (int j in list)
+            {
+                if (j == 1) solved++;
+            }
+
+            Program.total = total;
+            Program.solved = solved;
+
+            progressBar1.Value = solved * 100 / total;
+            label3.Text = (solved * 100 / total).ToString() + " %";
+
+
+        }
+
+
         private void menu_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+
+
+
+            Program.locX = button1.Location.X + button1.Width + 20;
+            Program.locY = button1.Location.Y;
+            Program.winWidth = Width - Program.locX;
+            Program.winHeight = Height - Program.locY;
+
+
+
+            timer1.Interval = 1000;
+            timer1.Start();
+
+
+
+            refresh();
             userName.Text = Program.user;
             userID.Text = Program.id;
             userCourse.Text = Program.courseName;
 
 
-            string query = "SELECT logs FROM users WHERE id = " + Program.id; 
-            SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
-            SQLiteDataReader reader = command.ExecuteReader();
-            string i = "";
-
-            foreach (DbDataRecord record in reader)
-            {
-                i = record[0].ToString();
-            }
+            
 
 
-            if (i == "")
+            if (log == "")
             {
                 try
                 {
@@ -96,8 +144,8 @@ namespace iLearning
             else
             {
                 
-                List<int> list = new List<int>();
-                foreach (string j in i.Split(','))
+               /* List<int> list = new List<int>();
+                foreach (string j in log.Split(','))
                 {
                     list.Add(int.Parse(j));
                 }
@@ -113,19 +161,23 @@ namespace iLearning
                 Program.solved = solved;
 
                 progressBar1.Value = solved * 100 / total;
-                label3.Text = (solved * 100 / total).ToString() + " %";
+                label3.Text = (solved * 100 / total).ToString() + " %";*/
             }
 
 
             //retrievedData = (byte[])reader["data"];
 
-            // this.FormBorderStyle = FormBorderStyle.None;
-            // this.WindowState = FormWindowState.Maximized;
+            
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+          
+
+
+
             Program.flag = true;
 
             string query = "SELECT COUNT(*) FROM " + Program.courseName;
@@ -138,13 +190,13 @@ namespace iLearning
             }
 
 
-            string updateQuery = "UPDATE processing SET val = " + i + " WHERE field = 'total'";
+         /*   string updateQuery = "UPDATE processing SET val = " + i + " WHERE field = 'total'";
             SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
-            command2.ExecuteNonQuery();
+            command2.ExecuteNonQuery();*/
 
            
 
-
+/*
             string query2 = "SELECT val FROM processing WHERE field = 'solved'";
             SQLiteCommand command3 = new SQLiteCommand(query2, sqliteCon);
             SQLiteDataReader reader2 = command3.ExecuteReader();
@@ -153,7 +205,7 @@ namespace iLearning
             {
                 trueCount = record[0].ToString();
             }
-            Console.WriteLine("trueCoiynt " + trueCount);
+            Console.WriteLine("trueCoiynt " + trueCount);*/
 
 
 
@@ -204,7 +256,8 @@ namespace iLearning
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Close();
+            System.Windows.Forms.Application.Exit();
+            //Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -217,6 +270,97 @@ namespace iLearning
         {
             journal j = new journal();
             j.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            refresh();
+         
+        }
+
+        private void buttonCourse_Click(object sender, EventArgs e)
+        {
+            Program.flag = true;
+
+            string query = "SELECT COUNT(*) FROM L_" + Program.courseName;
+            SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
+            SQLiteDataReader reader = command.ExecuteReader();
+            string i = "";
+            foreach (DbDataRecord record in reader)
+            {
+                i = record[0].ToString();
+            }
+
+            for (int j = 1; j <= Convert.ToInt32(i); j++)
+            {
+
+                if (Program.flag == false)
+                    break;
+
+
+
+                // -------------------------------------------------
+                //Program.cod = j;
+
+
+                string query3 = "SELECT type, text FROM L_" + Program.courseName + " WHERE Код = " + j;
+                SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
+                SQLiteDataReader reader3 = command4.ExecuteReader();
+                string type = "";
+                string text = "";
+                foreach (DbDataRecord record in reader3)
+                {
+                    type = record[0].ToString();
+                    text = record[1].ToString();
+                }
+
+
+
+                switch (type)
+                {
+                    case "L":
+                        formLection formLection = new formLection();
+                        Program.numLection = numLection;
+                        formLection.ShowDialog();
+                        numLection++;
+                        break;
+                    case "T":
+                        Program.cod = int.Parse(text);
+                        string query1 = "SELECT type FROM " + Program.courseName + " WHERE Код = " + text;
+                        SQLiteCommand command1 = new SQLiteCommand(query1, sqliteCon);
+                        SQLiteDataReader reader1 = command1.ExecuteReader();
+                        //string type = "";
+                        //string text = "";
+                        foreach (DbDataRecord record in reader1)
+                        {
+                            type = record[0].ToString();                            
+                        }
+
+                        switch (type)
+                        {
+                            case "choice":
+                                formChoice formChoice = new formChoice();
+                                formChoice.ShowDialog();
+                                break;
+                            case "sequence":
+                                formSequence formSequence = new formSequence();
+                                formSequence.ShowDialog();
+                                break;
+                            case "text":
+                                formText formText = new formText();
+                                formText.ShowDialog();
+                                break;
+
+                        }
+                        break;
+
+
+                }
+
+                
+
+
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.OleDb;
 using System.Data.SQLite;
 using System.Diagnostics;
@@ -37,7 +38,16 @@ namespace iLearning
 
         private void formChoice_Load(object sender, EventArgs e)
         {
-            sysColor = Color.LightGray;
+            this.FormBorderStyle = FormBorderStyle.None;
+
+            Location = new Point(Program.locX, Program.locY);
+            Width = Program.winWidth;
+            Height = Program.winHeight;
+
+
+
+
+            sysColor = Color.FromArgb(35, 23, 9);
 
             Dictionary<int, string> map = new Dictionary<int, string>();
            
@@ -199,7 +209,7 @@ namespace iLearning
             variant3.BackColor = sysColor;
             variant4.BackColor = sysColor;
 
-            btn.BackColor = Color.Gold;
+            btn.BackColor = Color.FromArgb(161, 98, 27);
 
             string text = btn.Text;
 
@@ -216,29 +226,7 @@ namespace iLearning
             }
 
 
-            string query2 = "SELECT val FROM processing WHERE field = 'solved'";
-            SQLiteCommand command2 = new SQLiteCommand(query2, sqliteCon);
-            SQLiteDataReader reader2 = command2.ExecuteReader();
 
-            trueCount = "";
-
-            foreach (DbDataRecord record in reader2)
-            {
-                trueCount = record[0].ToString();
-            }
-            
-
-
-
-
-            try
-            {
-                Convert.ToInt32(trueCount);
-            }
-            catch
-            {
-                trueCount = "0";
-            }
 
             if (text == Trueanswer)
             {
@@ -249,25 +237,7 @@ namespace iLearning
                 trueFlag = false;
             }
 
-          /*  int razn = (this.Width - button1.Width) / 10;
-                   
-            for (int i = 0; i <= 10; i++) {
-
-                button1.Width += razn;
-              
-                Thread.Sleep(1);
-                System.Windows.Forms.Application.DoEvents();
-            }
-            button1.Width = this.Width;
-
-            for (int i = 0; i <= 10; i++)
-            {
-
-                button1.Width -= razn;
-                button1.Location = new Point(button1.Location.X + razn, button1.Location.Y);
-                Thread.Sleep(10);
-                System.Windows.Forms.Application.DoEvents();
-            }*/
+        
 
 
         }
@@ -276,13 +246,39 @@ namespace iLearning
         {
             if (trueFlag)
             {
-                int newTrueCount = Convert.ToInt32(trueCount);
+                /*int newTrueCount = Convert.ToInt32(trueCount);
                 newTrueCount++;
 
                 string updateQuery = "UPDATE processing SET val = " + newTrueCount + " WHERE field = 'solved'";
                 SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
+                command2.ExecuteNonQuery();*/
+
+                string query3 = "SELECT logs FROM users WHERE id = " + Program.id + " AND course = '" + Program.courseName + "'";
+                SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
+                SQLiteDataReader reader3 = command4.ExecuteReader();
+
+                List<int> results = new List<int>();
+
+
+                foreach (DbDataRecord record in reader3)
+                {
+
+                    string stLogs = record[0].ToString();
+
+                    foreach (string j in stLogs.Split(','))
+                    {
+                        results.Add(int.Parse(j));
+                    }
+                }
+                results[Program.cod - 1] = 1;
+
+                string updateQuery = "UPDATE users SET logs = '" + String.Join(",", results) + "' WHERE id = " + Program.id;
+                SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
                 command2.ExecuteNonQuery();
-            }
+
+
+            }            
+            
             this.Close();
         }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonCourse = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -44,13 +45,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCourse
             // 
+            this.buttonCourse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.buttonCourse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCourse.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.buttonCourse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.buttonCourse.Location = new System.Drawing.Point(43, 61);
             this.buttonCourse.Margin = new System.Windows.Forms.Padding(20);
             this.buttonCourse.MinimumSize = new System.Drawing.Size(240, 100);
@@ -58,11 +63,15 @@
             this.buttonCourse.Size = new System.Drawing.Size(361, 100);
             this.buttonCourse.TabIndex = 2;
             this.buttonCourse.Text = "Курс";
-            this.buttonCourse.UseVisualStyleBackColor = true;
+            this.buttonCourse.UseVisualStyleBackColor = false;
+            this.buttonCourse.Click += new System.EventHandler(this.buttonCourse_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.button1.Location = new System.Drawing.Point(43, 179);
             this.button1.Margin = new System.Windows.Forms.Padding(20);
             this.button1.MinimumSize = new System.Drawing.Size(240, 100);
@@ -70,12 +79,15 @@
             this.button1.Size = new System.Drawing.Size(361, 100);
             this.button1.TabIndex = 3;
             this.button1.Text = "Задачи";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.button2.Location = new System.Drawing.Point(43, 301);
             this.button2.Margin = new System.Windows.Forms.Padding(20);
             this.button2.MinimumSize = new System.Drawing.Size(240, 100);
@@ -83,12 +95,15 @@
             this.button2.Size = new System.Drawing.Size(361, 100);
             this.button2.TabIndex = 4;
             this.button2.Text = "Настройки";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.button3.Location = new System.Drawing.Point(43, 533);
             this.button3.Margin = new System.Windows.Forms.Padding(20);
             this.button3.MinimumSize = new System.Drawing.Size(240, 100);
@@ -96,7 +111,7 @@
             this.button3.Size = new System.Drawing.Size(361, 100);
             this.button3.TabIndex = 5;
             this.button3.Text = "Выход";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel1
@@ -175,7 +190,10 @@
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.button4.Location = new System.Drawing.Point(43, 419);
             this.button4.Margin = new System.Windows.Forms.Padding(20);
             this.button4.MinimumSize = new System.Drawing.Size(240, 100);
@@ -183,7 +201,7 @@
             this.button4.Size = new System.Drawing.Size(361, 100);
             this.button4.TabIndex = 7;
             this.button4.Text = "Журнал";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel2
@@ -228,10 +246,15 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "proc %";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
             this.ClientSize = new System.Drawing.Size(970, 621);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button4);
@@ -269,5 +292,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer timer1;
     }
 }

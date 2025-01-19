@@ -87,6 +87,13 @@ namespace iLearning
 
         private void journal_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+
+            Location = new Point(Program.locX, Program.locY);
+            Width = Program.winWidth;
+            Height = Program.winHeight;
+
+
             string stID;
             string stName;
             string stLogs;
@@ -161,6 +168,11 @@ namespace iLearning
 
             }
             refresh = true;
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
