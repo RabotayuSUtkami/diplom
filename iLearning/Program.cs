@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,7 +21,22 @@ namespace iLearning
         static void Main()
         {
 
-            
+            string path = "Database.db";
+            string resPath = "../../../Database.db";
+
+            try
+            {
+
+                if (!File.Exists(path))
+                {
+
+                    File.Copy(resPath, path);
+                }
+            }
+            catch {
+                MessageBox.Show("База данных не найдена");
+                return;
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

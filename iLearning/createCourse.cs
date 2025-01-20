@@ -24,6 +24,7 @@ namespace iLearning
         int count = 0;
         int countTest = 1;
 
+        bool newClick = false;
         bool thisTest = false;
         string comText = "";
 
@@ -73,6 +74,9 @@ namespace iLearning
 
             if (course == "")
             {
+                try
+                {
+
                 string createTable = "CREATE TABLE '" + courseName.Text + "' (Код INTEGER NOT NULL UNIQUE, num INTEGER, type TEXT, question TEXT, trueanswer TEXT, answer1 TEXT, answer2 TEXT, answer3 TEXT, askvar1 TEXT, askvar2 TEXT, askvar3 TEXT, askvar4 TEXT, answvar1 TEXT, answvar2 TEXT, answvar3 TEXT, answvar4 TEXT, PRIMARY KEY(Код))";
                 SQLiteCommand command0 = new SQLiteCommand(createTable, sqliteCon);
                 command0.ExecuteNonQuery();
@@ -91,6 +95,14 @@ namespace iLearning
                 command3.ExecuteNonQuery();
 
                 panel1.Visible = true;
+
+                MessageBox.Show("Курс создан");
+
+                }
+                catch
+                {
+                    MessageBox.Show("Возможно, курс уже существует");
+                }
             }
             else
             {
@@ -102,9 +114,11 @@ namespace iLearning
 
         private void buttonAddLection_Click(object sender, EventArgs e)
         {
-            
 
-            save();
+
+            int s = save();
+            if (s == 1)
+                return;
 
             count++;
 
@@ -134,7 +148,10 @@ namespace iLearning
             richtextbox[count].AutoSize = false;
             richtextbox[count].Tag = count;
             richtextbox[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
-           
+            richtextbox[count].Click += rowClear;
+            newClick = true;
+            richtextbox[count].ForeColor = Color.Black;
+            
 
 
             panel2.AutoScrollPosition = new Point(panel2.VerticalScroll.Minimum);
@@ -151,7 +168,11 @@ namespace iLearning
         private void buttonAddTest_Click(object sender, EventArgs e)
         {
             
-            save();
+            int s = save();
+            if (s == 1)
+                return;
+
+
             count++;
             y += 250;
             
@@ -199,42 +220,52 @@ namespace iLearning
         }
 
 
-        public void save()
+        int save()
         {
-            if (count != 0 && thisTest == true)
+            try
             {
-                string insertTable = "";
-                if (comText == "choice")
+                if (count != 0 && thisTest == true)
                 {
-                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer, answer1, answer2, answer3) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "', '" + txtbx2[count].Text + "', '" + txtbx3[count].Text + "', '" + txtbx4[count].Text + "')";
+                    string insertTable = "";
+                    if (comText == "choice")
+                    {
+                        insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer, answer1, answer2, answer3) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "', '" + txtbx2[count].Text + "', '" + txtbx3[count].Text + "', '" + txtbx4[count].Text + "')";
+                    }
+                    if (comText == "sequence")
+                    {
+                        insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, askvar1, answvar1, askvar2, answvar2, askvar3, answvar3, askvar4, answvar4) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "', '" + txtbx2[count].Text + "', '" + txtbx3[count].Text + "', '" + txtbx4[count].Text + "', '" + txtbx5[count].Text + "', '" + txtbx6[count].Text + "', '" + txtbx7[count].Text + "', '" + txtbx8[count].Text + "')";
+                    }
+                    if (comText == "text")
+                    {
+                        insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "')";
+                    }
+
+
+                    SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
+                    command1.ExecuteNonQuery();
+
+
+                    insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('T', " + countTest + ")";
+                    SQLiteCommand command2 = new SQLiteCommand(insertTable, sqliteCon);
+                    command2.ExecuteNonQuery();
+                    countTest++;
+                    Program.total = countTest;
+
                 }
-                if (comText == "sequence")
+                else if (count != 0 && thisTest == false)
                 {
-                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, askvar1, answvar1, askvar2, answvar2, askvar3, answvar3, askvar4, answvar4) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "', '" + txtbx2[count].Text + "', '" + txtbx3[count].Text + "', '" + txtbx4[count].Text + "', '" + txtbx5[count].Text + "', '" + txtbx6[count].Text + "', '" + txtbx7[count].Text + "', '" + txtbx8[count].Text + "')";
+                    string insertTable = "";
+                    insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('L', '" + richtextbox[count].Text + "')";
+
+                    SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
+                    command1.ExecuteNonQuery();
                 }
-                if (comText == "text")
-                {
-                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "')";
-                }
-
-
-                SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
-                command1.ExecuteNonQuery();
-
-
-                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('T', " + countTest + ")";
-                SQLiteCommand command2 = new SQLiteCommand(insertTable, sqliteCon);
-                command2.ExecuteNonQuery();
-                countTest++;
-
+                return 0;
             }
-            else if (count != 0 && thisTest == false)
+            catch
             {
-                string insertTable = "";
-                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('L', '" + richtextbox[count].Text + "')";
-
-                SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
-                command1.ExecuteNonQuery();
+                MessageBox.Show("Ошибка! Возможно в тексте присутствуют недопустимы символы ( ' , '' )");
+                return 1;
             }
 
 
@@ -242,8 +273,26 @@ namespace iLearning
 
         public void rowClear(object sender, EventArgs e)
         {
-            System.Windows.Forms.TextBox tx = (System.Windows.Forms.TextBox)sender;
-            tx.Text = "";
+            try
+            {
+                System.Windows.Forms.TextBox tx = (System.Windows.Forms.TextBox)sender;
+                tx.Text = "";
+            }
+            catch
+            {
+                try
+                {
+                    if (newClick == false) return;
+                    RichTextBox rtx = (RichTextBox)sender;
+                    rtx.Text = "";
+                    newClick = false;
+                }
+                catch
+                {
+
+                }
+            }
+            
             
         }
 

@@ -32,9 +32,9 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.question = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -77,6 +77,7 @@
             this.question.TabIndex = 4;
             this.question.Text = "Вопрос:  а б в г д е ж з и к л н м н о";
             this.question.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.question.Visible = false;
             // 
             // panel1
             // 
@@ -90,6 +91,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1098, 564);
             this.panel1.TabIndex = 10;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
+            this.button2.Location = new System.Drawing.Point(6, 514);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 50);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Выход";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -118,21 +134,6 @@
             this.richTextBox1.Text = "опрор ыа вп ыврп ые рыреы  еурер  кпкп ку ыерыеры ерык\nтекст1\nтекст2\nтекст3\nтекст" +
     "4\nтекст5\nтекст6\nтекст7\nмного текста\nыр\n\nпрпрврыыепакы\nвоврп\nафы\nеакф\nпаеорвполп\n" +
     "\nыафепкыорнвове\n\n\n\n";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
-            this.button2.Location = new System.Drawing.Point(6, 514);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 50);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Выход";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // formLection
             // 

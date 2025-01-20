@@ -91,7 +91,7 @@ namespace iLearning
             Program.locX = button1.Location.X + button1.Width + 20;
             Program.locY = button1.Location.Y;
             Program.winWidth = Width - Program.locX;
-            Program.winHeight = Height - Program.locY;
+            Program.winHeight = Height - Program.locY - panel2.Height*2;
 
 
 
@@ -133,7 +133,7 @@ namespace iLearning
                 try
                 {
 
-                    string query0 = "SELECT COUNT(*) FROM " + Program.courseName;
+                    string query0 = "SELECT COUNT(*) FROM '" + Program.courseName + "'";
                     SQLiteCommand command0 = new SQLiteCommand(query0, sqliteCon);
                     SQLiteDataReader reader0 = command0.ExecuteReader();
                     int ii = 0;
@@ -178,7 +178,7 @@ namespace iLearning
 
             Program.flag = true;
 
-            string query = "SELECT COUNT(*) FROM " + Program.courseName;
+            string query = "SELECT COUNT(*) FROM '" + Program.courseName + ";";
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
             string i = "";
@@ -199,7 +199,7 @@ namespace iLearning
               
 
 
-                string query3 = "SELECT type FROM " + Program.courseName + " WHERE Код = " + j;
+                string query3 = "SELECT type FROM '" + Program.courseName + "' WHERE Код = " + j;
                 SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
                 SQLiteDataReader reader3 = command4.ExecuteReader();
                 string type = "";
@@ -269,7 +269,7 @@ namespace iLearning
         {
             Program.flag = true;
 
-            string query = "SELECT COUNT(*) FROM L_" + Program.courseName;
+            string query = "SELECT COUNT(*) FROM 'L_" + Program.courseName + "'";
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
             string i = "";
@@ -285,7 +285,7 @@ namespace iLearning
                     break;
 
 
-                string query3 = "SELECT type, text FROM L_" + Program.courseName + " WHERE Код = " + j;
+                string query3 = "SELECT type, text FROM 'L_" + Program.courseName + "' WHERE Код = " + j;
                 SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
                 SQLiteDataReader reader3 = command4.ExecuteReader();
                 string type = "";
@@ -307,8 +307,9 @@ namespace iLearning
                         numLection++;
                         break;
                     case "T":
+                        numLection++;
                         Program.cod = int.Parse(text);
-                        string query1 = "SELECT type FROM " + Program.courseName + " WHERE Код = " + text;
+                        string query1 = "SELECT type FROM '" + Program.courseName + "' WHERE Код = " + text;
                         SQLiteCommand command1 = new SQLiteCommand(query1, sqliteCon);
                         SQLiteDataReader reader1 = command1.ExecuteReader();
 
@@ -334,6 +335,7 @@ namespace iLearning
 
                         }
                         break;
+
                 }
             }
         }

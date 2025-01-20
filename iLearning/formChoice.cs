@@ -52,7 +52,7 @@ namespace iLearning
             Dictionary<int, string> map = new Dictionary<int, string>();
            
 
-            string query = "SELECT question, trueanswer, answer1, answer2, answer3 FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            string query = "SELECT question, trueanswer, answer1, answer2, answer3 FROM '" + Program.courseName + "' WHERE Код = " + Program.cod;
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
           
@@ -214,7 +214,7 @@ namespace iLearning
             string text = btn.Text;
 
 
-            string query = "SELECT trueanswer FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            string query = "SELECT trueanswer FROM '" + Program.courseName + "' WHERE Код = " + Program.cod;
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
 

@@ -38,7 +38,7 @@ namespace iLearning
 
 
 
-            string query = "SELECT text FROM L_" + Program.courseName + " WHERE Код = " + Program.numLection + " AND type = 'L'";
+            string query = "SELECT text FROM 'L_" + Program.courseName + "' WHERE Код = " + Program.numLection + " AND type = 'L'";
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
 

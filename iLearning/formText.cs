@@ -37,7 +37,7 @@ namespace iLearning
 
 
 
-            string query = "SELECT question FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            string query = "SELECT question FROM '" + Program.courseName + "' WHERE Код = " + Program.cod;
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
 
@@ -52,7 +52,7 @@ namespace iLearning
         private int Checking()
         {
 
-            string query = "SELECT trueanswer FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            string query = "SELECT trueanswer FROM '" + Program.courseName + "' WHERE Код = " + Program.cod;
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
 
@@ -99,7 +99,7 @@ namespace iLearning
                     }
                     results[Program.cod - 1] = 1;
 
-                    string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
+                    string updateQuery = "UPDATE users SET logs = '" + String.Join(",", results) + "' WHERE id = " + Program.id;
                     SQLiteCommand command3 = new SQLiteCommand(updateQuery, sqliteCon);
                     command3.ExecuteNonQuery();
                 }

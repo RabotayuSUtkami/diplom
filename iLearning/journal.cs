@@ -75,7 +75,26 @@ namespace iLearning
                 }
                 catch
                 {
+
                     MessageBox.Show("Произошла непредвиденная ошибка");
+
+                    string query0 = "SELECT COUNT(*) FROM '" + Program.courseName + "'";
+                    SQLiteCommand command0 = new SQLiteCommand(query0, sqliteCon);
+                    SQLiteDataReader reader0 = command0.ExecuteReader();
+                    int ii = 0;
+                    foreach (DbDataRecord record in reader0)
+                    {
+                        ii = Convert.ToInt32(record[0].ToString());
+                    }
+                    List<int> results = new List<int>();
+
+
+                    for (int j = 0; j < ii; j++)
+                    {
+                        results.Add(0);
+                    }
+
+                    Program.total = results.Count;
                 }
 
 

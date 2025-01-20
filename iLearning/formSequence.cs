@@ -78,7 +78,7 @@ namespace iLearning
             Dictionary<int, string> map2 = new Dictionary<int, string>();
 
 
-            string query = "SELECT question, askvar1, askvar2, askvar3, askvar4, answvar1, answvar2, answvar3, answvar4 FROM " + Program.courseName + " WHERE Код = " + Program.cod;
+            string query = "SELECT question, askvar1, askvar2, askvar3, askvar4, answvar1, answvar2, answvar3, answvar4 FROM '" + Program.courseName + "' WHERE Код = " + Program.cod;
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
             SQLiteDataReader reader = command.ExecuteReader();
 
@@ -367,7 +367,7 @@ namespace iLearning
                     }
                     results[Program.cod - 1] = 1;
 
-                    string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
+                    string updateQuery = "UPDATE users SET logs = '" + String.Join(",", results) + "' WHERE id = " + Program.id;
                     SQLiteCommand command3 = new SQLiteCommand(updateQuery, sqliteCon);
                     command3.ExecuteNonQuery();
                 }     
