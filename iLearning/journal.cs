@@ -59,6 +59,8 @@ namespace iLearning
             {
                 try
                 {
+
+
                     string log = string.Concat(Enumerable.Repeat("0,", Program.total));
                     log = log.Remove(log.Length - 1);
 
@@ -106,10 +108,6 @@ namespace iLearning
                 for (int i = 0; i < Program.total; i++)
                 {
                     dataGridView1.Columns.Add("test" + (i + 1), "Тест " + (i + 1));
-                    /* DataGridViewColumn column = dataGridView1.Columns[2 + i];
-                     column.Width = 50;*/
-
-
                 }
                 dataGridView1.Columns.Add("Solved", "Выполнено");
                 dataGridView1.Columns.Add("Total", "Всего");
@@ -157,14 +155,7 @@ namespace iLearning
                 dataGridView1[column, row].Value = stTotal;
                 column++;
 
-
-                
                 row++;
-
-                //dataGridView1.Rows.Add("stID", "stName");
-
-
-
 
             }
             refresh = true;

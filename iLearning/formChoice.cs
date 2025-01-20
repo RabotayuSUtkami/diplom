@@ -246,13 +246,7 @@ namespace iLearning
         {
             if (trueFlag)
             {
-                /*int newTrueCount = Convert.ToInt32(trueCount);
-                newTrueCount++;
-
-                string updateQuery = "UPDATE processing SET val = " + newTrueCount + " WHERE field = 'solved'";
-                SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
-                command2.ExecuteNonQuery();*/
-
+             
                 string query3 = "SELECT logs FROM users WHERE id = " + Program.id + " AND course = '" + Program.courseName + "'";
                 SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
                 SQLiteDataReader reader3 = command4.ExecuteReader();

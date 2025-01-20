@@ -73,28 +73,7 @@ namespace iLearning
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*string query2 = "SELECT val FROM processing WHERE field = 'solved'";
-            SQLiteCommand command2 = new SQLiteCommand(query2, sqliteCon);
-            SQLiteDataReader reader2 = command2.ExecuteReader();
-
-            string trueCount = "";
-
-            foreach (DbDataRecord record in reader2)
-            {
-                trueCount = record[0].ToString();
-            }
-
-
-            try
-            {
-                Convert.ToInt32(trueCount);
-            }
-            catch
-            {
-                trueCount = "0";
-            }*/
-
-
+           
             if (inputText.Text != "" || inputText.Text != " ")
             {
                 int a = Checking();
@@ -124,8 +103,6 @@ namespace iLearning
                     SQLiteCommand command3 = new SQLiteCommand(updateQuery, sqliteCon);
                     command3.ExecuteNonQuery();
                 }
-
-
 
             }
             this.Close();

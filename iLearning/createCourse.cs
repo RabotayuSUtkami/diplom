@@ -20,7 +20,7 @@ namespace iLearning
         System.Data.SQLite.SQLiteConnection sqliteCon = new System.Data.SQLite.SQLiteConnection(dbConnectionString);
 
         int x = 30;
-        int y = 30;
+        int y = -220;
         int count = 0;
         int countTest = 1;
 
@@ -53,6 +53,11 @@ namespace iLearning
         private void buttonCreateCourse_Click(object sender, EventArgs e)
         {
 
+            if (courseName.Text == "")
+            {
+                MessageBox.Show("Введите название курса");
+                return;
+            }
 
             string query = "SELECT course FROM courses WHERE course = '" + courseName.Text + "'";
             SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
@@ -75,10 +80,7 @@ namespace iLearning
                 string createTable2 = "CREATE TABLE 'L_" + courseName.Text + "' (Код INTEGER NOT NULL UNIQUE, type TEXT, text TEXT, PRIMARY KEY(Код))";
                 SQLiteCommand command2 = new SQLiteCommand(createTable2, sqliteCon);
                 command2.ExecuteNonQuery();
-
-                /*string createTable3 = "CREATE TABLE 'U_" + courseName.Text + "' (id TEXT, text TEXT, PRIMARY KEY(Код))";
-                SQLiteCommand command4 = new SQLiteCommand(createTable3, sqliteCon);
-                command4.ExecuteNonQuery();*/
+                
 
                 string insertTable = "INSERT INTO Courses (Course) VALUES ('" + courseName.Text + "')";
                 SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
@@ -101,7 +103,17 @@ namespace iLearning
         private void buttonAddLection_Click(object sender, EventArgs e)
         {
             
+
             save();
+
+            count++;
+
+            y += 250;
+
+           
+
+            
+
 
             thisTest = false;
 
@@ -111,11 +123,7 @@ namespace iLearning
             panel[count].Size = new Size(861, 220);
             panel[count].AutoSize = false;
             panel[count].Tag = count;
-
-
-            panel[count].BackColor = Color.LightGreen;
-            // pan[i].BackColor = Color.FromArgb(255, 202, 134);
-
+            panel[count].BackColor = Color.FromArgb(169, 123, 80);
 
 
             richtextbox[count] = new RichTextBox();
@@ -126,49 +134,7 @@ namespace iLearning
             richtextbox[count].AutoSize = false;
             richtextbox[count].Tag = count;
             richtextbox[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
-            /*          richtextbox[count]
-                      richtextbox[count]
-                      richtextbox[count]*/
-
-
-            /* t1[i] = new TextBox();
-             t1[i].Location = new Point(61, 25);
-             t1[i].Size = new Size(228, 28);
-             t1[i].AutoSize = false;
-             t1[i].Tag = i;
-             t1[i].Text = dol;
-             t1[i].ForeColor = Color.Black;
-             t1[i].Font = new Font("Snap ITC", 12, FontStyle.Bold);
-             t1[i].BackColor = Color.White;
-             //t1[i].BackColor = Color.FromArgb(153, 255, 153);
-             t1[i].ReadOnly = true;
-             t1[i].Visible = true;
-
-
-             t2[i] = new TextBox();
-             t2[i].Location = new Point(38, 331);
-             t2[i].Size = new Size(278, 28);
-             t2[i].AutoSize = false;
-             t2[i].Tag = i;
-             t2[i].Text = fio;
-             t2[i].ReadOnly = true;
-             t2[i].BackColor = Color.White;
-             //t2[i].BackColor = Color.FromArgb(153, 255, 153);
-             t2[i].Font = new Font("Snap ITC", 12, FontStyle.Bold);
-
-
-
-
-             p[i] = new PictureBox();
-             p[i].Location = new Point(61, 63);
-             p[i].Size = new Size(228, 244);
-             p[i].AutoSize = false;
-             p[i].Tag = i;
-             p[i].SizeMode = PictureBoxSizeMode.Zoom;
-             p[i].Click += prod;
-             p[i].Load("img/" + fio + ".jpg");*/
-
-
+           
 
 
             panel2.AutoScrollPosition = new Point(panel2.VerticalScroll.Minimum);
@@ -176,9 +142,7 @@ namespace iLearning
             panel2.Controls.Add(panel[count]);
 
             panel[count].Controls.Add(richtextbox[count]);
-
-            y += 250;
-            count++;
+         
 
             panel2.AutoScrollPosition = new Point(panel2.VerticalScroll.Maximum);
 
@@ -186,8 +150,13 @@ namespace iLearning
 
         private void buttonAddTest_Click(object sender, EventArgs e)
         {
-
+            
             save();
+            count++;
+            y += 250;
+            
+
+            
 
             thisTest = true;
 
@@ -199,7 +168,7 @@ namespace iLearning
             panel[count].Tag = count;
 
 
-            panel[count].BackColor = Color.LightGreen;
+            panel[count].BackColor = Color.FromArgb(169, 123, 80);
 
             comBox[count] = new System.Windows.Forms.ComboBox();
             
@@ -227,7 +196,6 @@ namespace iLearning
 
             panel2.AutoScrollPosition = new Point(panel2.VerticalScroll.Maximum);
 
-            //comBox[count]
         }
 
 
@@ -238,15 +206,15 @@ namespace iLearning
                 string insertTable = "";
                 if (comText == "choice")
                 {
-                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer, answer1, answer2, answer3) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "', '" + txtbx2[count - 1].Text + "', '" + txtbx3[count - 1].Text + "', '" + txtbx4[count - 1].Text + "')";
+                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer, answer1, answer2, answer3) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "', '" + txtbx2[count].Text + "', '" + txtbx3[count].Text + "', '" + txtbx4[count].Text + "')";
                 }
                 if (comText == "sequence")
                 {
-                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, askvar1, answvar1, askvar2, answvar2, askvar3, answvar3, askvar4, answvar4) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "', '" + txtbx2[count - 1].Text + "', '" + txtbx3[count - 1].Text + "', '" + txtbx4[count - 1].Text + "', '" + txtbx5[count - 1].Text + "', '" + txtbx6[count - 1].Text + "', '" + txtbx7[count - 1].Text + "', '" + txtbx8[count - 1].Text + "')";
+                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, askvar1, answvar1, askvar2, answvar2, askvar3, answvar3, askvar4, answvar4) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "', '" + txtbx2[count].Text + "', '" + txtbx3[count].Text + "', '" + txtbx4[count].Text + "', '" + txtbx5[count].Text + "', '" + txtbx6[count].Text + "', '" + txtbx7[count].Text + "', '" + txtbx8[count].Text + "')";
                 }
                 if (comText == "text")
                 {
-                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer) VALUES ('" + comText + "', '" + txtbxQws[count - 1].Text + "', '" + txtbx1[count - 1].Text + "')";
+                    insertTable = "INSERT INTO '" + courseName.Text + "' (type, question, trueanswer) VALUES ('" + comText + "', '" + txtbxQws[count].Text + "', '" + txtbx1[count].Text + "')";
                 }
 
 
@@ -263,7 +231,7 @@ namespace iLearning
             else if (count != 0 && thisTest == false)
             {
                 string insertTable = "";
-                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('L', '" + richtextbox[count - 1].Text + "')";
+                insertTable = "INSERT INTO 'L_" + courseName.Text + "' (type, text) VALUES ('L', '" + richtextbox[count].Text + "')";
 
                 SQLiteCommand command1 = new SQLiteCommand(insertTable, sqliteCon);
                 command1.ExecuteNonQuery();
@@ -271,10 +239,30 @@ namespace iLearning
 
 
         }
+
+        public void rowClear(object sender, EventArgs e)
+        {
+            System.Windows.Forms.TextBox tx = (System.Windows.Forms.TextBox)sender;
+            tx.Text = "";
+            
+        }
+
+
         public void change(object sender, EventArgs e)
         {
             int cod = Convert.ToInt32((sender as System.Windows.Forms.ComboBox).Tag);
             comText = (sender as System.Windows.Forms.ComboBox).Text;
+
+
+            panel[count].Controls.Remove(txtbxQws[count]);
+            panel[count].Controls.Remove(txtbx1[count]);
+            panel[count].Controls.Remove(txtbx2[count]);
+            panel[count].Controls.Remove(txtbx3[count]);
+            panel[count].Controls.Remove(txtbx4[count]);
+            panel[count].Controls.Remove(txtbx5[count]);
+            panel[count].Controls.Remove(txtbx6[count]);
+            panel[count].Controls.Remove(txtbx7[count]);
+            panel[count].Controls.Remove(txtbx8[count]);
 
 
             if (comText == "choice")
@@ -287,6 +275,7 @@ namespace iLearning
                 txtbxQws[count].AutoSize = false;
                 txtbxQws[count].Tag = count;
                 txtbxQws[count].Text = "Вопрос";
+                txtbxQws[count].Click += rowClear;
                 txtbxQws[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx1[count] = new System.Windows.Forms.TextBox();
@@ -295,6 +284,7 @@ namespace iLearning
                 txtbx1[count].AutoSize = false;
                 txtbx1[count].Tag = count;
                 txtbx1[count].Text = "Верный ответ";
+                txtbx1[count].Click += rowClear;
                 txtbx1[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx2[count] = new System.Windows.Forms.TextBox();
@@ -303,6 +293,7 @@ namespace iLearning
                 txtbx2[count].AutoSize = false;
                 txtbx2[count].Tag = count;
                 txtbx2[count].Text = "Неверный ответ 1";
+                txtbx2[count].Click += rowClear;////
                 txtbx2[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx3[count] = new System.Windows.Forms.TextBox();
@@ -311,6 +302,7 @@ namespace iLearning
                 txtbx3[count].AutoSize = false;
                 txtbx3[count].Tag = count;
                 txtbx3[count].Text = "Неверный ответ 2";
+                txtbx3[count].Click += rowClear;////
                 txtbx3[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx4[count] = new System.Windows.Forms.TextBox();
@@ -319,6 +311,7 @@ namespace iLearning
                 txtbx4[count].AutoSize = false;
                 txtbx4[count].Tag = count;
                 txtbx4[count].Text = "Неверный ответ 3";
+                txtbx4[count].Click += rowClear;////
                 txtbx4[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
 
@@ -338,7 +331,8 @@ namespace iLearning
                 txtbxQws[count].Size = new Size(288, 34);
                 txtbxQws[count].AutoSize = false;
                 txtbxQws[count].Tag = count;
-                txtbxQws[count].Text = "Условие";
+                txtbxQws[count].Text = "Вопрос";
+                txtbxQws[count].Click += rowClear;////
                 txtbxQws[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx1[count] = new System.Windows.Forms.TextBox();
@@ -347,6 +341,7 @@ namespace iLearning
                 txtbx1[count].AutoSize = false;
                 txtbx1[count].Tag = count;
                 txtbx1[count].Text = "Условие 1";
+                txtbx1[count].Click += rowClear;////
                 txtbx1[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx2[count] = new System.Windows.Forms.TextBox();
@@ -355,6 +350,7 @@ namespace iLearning
                 txtbx2[count].AutoSize = false;
                 txtbx2[count].Tag = count;
                 txtbx2[count].Text = "Значение 1";
+                txtbx2[count].Click += rowClear;////
                 txtbx2[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx3[count] = new System.Windows.Forms.TextBox();
@@ -363,6 +359,7 @@ namespace iLearning
                 txtbx3[count].AutoSize = false;
                 txtbx3[count].Tag = count;
                 txtbx3[count].Text = "Условие 2";
+                txtbx3[count].Click += rowClear;////
                 txtbx3[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx4[count] = new System.Windows.Forms.TextBox();
@@ -371,6 +368,7 @@ namespace iLearning
                 txtbx4[count].AutoSize = false;
                 txtbx4[count].Tag = count;
                 txtbx4[count].Text = "Значение 2";
+                txtbx4[count].Click += rowClear;////
                 txtbx4[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx5[count] = new System.Windows.Forms.TextBox();
@@ -379,6 +377,7 @@ namespace iLearning
                 txtbx5[count].AutoSize = false;
                 txtbx5[count].Tag = count;
                 txtbx5[count].Text = "Условие 3";
+                txtbx5[count].Click += rowClear;////
                 txtbx5[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx6[count] = new System.Windows.Forms.TextBox();
@@ -387,6 +386,7 @@ namespace iLearning
                 txtbx6[count].AutoSize = false;
                 txtbx6[count].Tag = count;
                 txtbx6[count].Text = "Значение 3";
+                txtbx6[count].Click += rowClear;////
                 txtbx6[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx7[count] = new System.Windows.Forms.TextBox();
@@ -395,6 +395,7 @@ namespace iLearning
                 txtbx7[count].AutoSize = false;
                 txtbx7[count].Tag = count;
                 txtbx7[count].Text = "Условие 4";
+                txtbx7[count].Click += rowClear;////
                 txtbx7[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
                 txtbx8[count] = new System.Windows.Forms.TextBox();
@@ -403,6 +404,7 @@ namespace iLearning
                 txtbx8[count].AutoSize = false;
                 txtbx8[count].Tag = count;
                 txtbx8[count].Text = "Значение 4";
+                txtbx8[count].Click += rowClear;////
                 txtbx8[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
 
@@ -425,16 +427,10 @@ namespace iLearning
                 txtbx1[count].AutoSize = false;
                 txtbx1[count].Tag = count;
                 txtbx1[count].Text = "Пропущенное слово";
+                txtbx1[count].Click += rowClear;////
                 txtbx1[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
-                /*     txtbx1[count] = new System.Windows.Forms.TextBox();
-                     txtbx1[count].Location = new Point(12, 169);
-                     txtbx1[count].Size = new Size(288, 34);
-                     txtbx1[count].AutoSize = false;
-                     txtbx1[count].Tag = count;
-                     txtbx1[count].Text = "Пропущенное слово";
-                     txtbx1[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);*/
-
+               
                 txtbxQws[count] = new System.Windows.Forms.TextBox();
                 txtbxQws[count].Location = new Point(314, 13);
                 txtbxQws[count].Multiline = true;
@@ -442,18 +438,17 @@ namespace iLearning
                 txtbxQws[count].AutoSize = false;
                 txtbxQws[count].Tag = count;
                 txtbxQws[count].Text = "Текст с пропущенным словом";
+                txtbxQws[count].Click += rowClear;////
                 txtbxQws[count].Font = new Font("Comic Sans MS", 14, FontStyle.Bold);
 
 
                 panel[count].Controls.Add(txtbxQws[count]);
                 panel[count].Controls.Add(txtbx1[count]);
-                //panel[count].Controls.Add(txtbx2[count]);
              
             }
            
 
-            y += 250;
-            count++;
+         
         }
 
         private void createCourse_Load(object sender, EventArgs e)

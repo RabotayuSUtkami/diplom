@@ -119,6 +119,7 @@
             this.buttonSave.TabIndex = 6;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Visible = false;
             // 
             // buttonExit
             // 

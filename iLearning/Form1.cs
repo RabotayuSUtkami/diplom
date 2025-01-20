@@ -91,13 +91,10 @@ namespace iLearning
 
         private void butSignIn_Click(object sender, EventArgs e)
         {
-
-           
-
-
+                       
             if (!flag)
             {
-                string query = "SELECT id, login, passw, course FROM users WHERE login = '" + login.Text + "'";
+                string query = "SELECT id, login, passw, course, admin FROM users WHERE login = '" + login.Text + "'";
                 SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
                 SQLiteDataReader reader = command.ExecuteReader();
 
@@ -105,6 +102,7 @@ namespace iLearning
                 string loginT = "";
                 string passT = "";
                 string course = "";
+                int adm = 0;
 
                 foreach (DbDataRecord record in reader)
                 {
@@ -112,6 +110,7 @@ namespace iLearning
                     loginT = record[1].ToString();
                     passT = record[2].ToString();
                     course = record[3].ToString();
+                    adm = int. Parse(record[4].ToString());
                 }
 
                 if (login.Text != "" && pass.Text != "" && login.Text == loginT && pass.Text == passT)
@@ -119,6 +118,7 @@ namespace iLearning
                     Program.user = loginT;
                     Program.id = id;
                     Program.courseName = course;
+                    Program.admin = adm;
 
                     menu menu = new menu();
                     menu.Show();
@@ -131,7 +131,7 @@ namespace iLearning
             }
             else
             {
-                string query = "SELECT id, login, passw, course FROM users WHERE id = '" + login.Text + "'";
+                string query = "SELECT id, login, passw, course, admin FROM users WHERE id = '" + login.Text + "'";
                 SQLiteCommand command = new SQLiteCommand(query, sqliteCon);
                 SQLiteDataReader reader = command.ExecuteReader();
 
@@ -139,6 +139,7 @@ namespace iLearning
                 string loginT = "";
                 string passT = "";
                 string course = "";
+                int adm = 0;
 
                 foreach (DbDataRecord record in reader)
                 {
@@ -146,6 +147,7 @@ namespace iLearning
                     loginT = record[1].ToString();
                     passT = record[2].ToString();
                     course = record[3].ToString();
+                    adm = int.Parse(record[4].ToString());
                 }
 
                 if (id != "" && id == login.Text)
@@ -153,6 +155,7 @@ namespace iLearning
                     Program.user = loginT;
                     Program.id = id;
                     Program.courseName = course;
+                    Program.admin = adm;
 
                     menu menu = new menu();
                     menu.Show();

@@ -39,6 +39,7 @@ namespace iLearning
         public static int solved = 0;
         public static int total = 0;
         public static int numLection = 0;
+        public static int admin = 0;
 
         public static int locX = 0;
         public static int locY = 0;

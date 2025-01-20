@@ -34,6 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,11 +83,12 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Location = new System.Drawing.Point(3, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1098, 538);
+            this.panel1.Size = new System.Drawing.Size(1098, 564);
             this.panel1.TabIndex = 10;
             // 
             // button1
@@ -95,9 +97,9 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
-            this.button1.Location = new System.Drawing.Point(978, 497);
+            this.button1.Location = new System.Drawing.Point(958, 514);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 38);
+            this.button1.Size = new System.Drawing.Size(140, 50);
             this.button1.TabIndex = 1;
             this.button1.Text = "→";
             this.button1.UseVisualStyleBackColor = false;
@@ -111,11 +113,26 @@
             this.richTextBox1.Location = new System.Drawing.Point(6, 19);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(1092, 472);
+            this.richTextBox1.Size = new System.Drawing.Size(1092, 492);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "опрор ыа вп ыврп ые рыреы  еурер  кпкп ку ыерыеры ерык\nтекст1\nтекст2\nтекст3\nтекст" +
     "4\nтекст5\nтекст6\nтекст7\nмного текста\nыр\n\nпрпрврыыепакы\nвоврп\nафы\nеакф\nпаеорвполп\n" +
     "\nыафепкыорнвове\n\n\n\n";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(23)))), ((int)(((byte)(9)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(123)))), ((int)(((byte)(80)))));
+            this.button2.Location = new System.Drawing.Point(6, 514);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 50);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Выход";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // formLection
             // 
@@ -145,5 +162,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

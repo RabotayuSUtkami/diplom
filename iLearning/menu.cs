@@ -95,18 +95,37 @@ namespace iLearning
 
 
 
-            timer1.Interval = 1000;
-            timer1.Start();
-
-
-
-            refresh();
+           
             userName.Text = Program.user;
             userID.Text = Program.id;
             userCourse.Text = Program.courseName;
 
 
-            
+            if (Program.admin == 0)
+            {
+                button3.Location = button2.Location;
+                button2.Visible = false;
+                button4.Visible = false;
+
+                timer1.Interval = 1000;
+                timer1.Start();
+
+
+
+                refresh();
+
+            }
+            else if (Program.admin == 1)
+            {
+                button1.Enabled = false;
+                buttonCourse.Enabled = false;
+            }
+            else if (Program.admin == 2)
+            {
+                button1.Enabled = false;
+                buttonCourse.Enabled = false;
+                button4.Enabled = false;
+            }
 
 
             if (log == "")
@@ -130,6 +149,8 @@ namespace iLearning
                         results.Add(0);
                     }
 
+                    Program.total = results.Count;  // ???????????
+
                     string updateQuery = "UPDATE users SET logs = '" + String.Join(", ", results) + "' WHERE id = " + Program.id;
                     SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
                     command2.ExecuteNonQuery();
@@ -144,30 +165,7 @@ namespace iLearning
             else
             {
                 
-               /* List<int> list = new List<int>();
-                foreach (string j in log.Split(','))
-                {
-                    list.Add(int.Parse(j));
-                }
-
-                int total = list.Count;
-                int solved = 0;
-                foreach (int j in list)
-                {
-                    if (j == 1)solved++;
-                }
-
-                Program.total = total;
-                Program.solved = solved;
-
-                progressBar1.Value = solved * 100 / total;
-                label3.Text = (solved * 100 / total).ToString() + " %";*/
             }
-
-
-            //retrievedData = (byte[])reader["data"];
-
-            
 
         }
 
@@ -188,27 +186,6 @@ namespace iLearning
             {
                 i = record[0].ToString();
             }
-
-
-         /*   string updateQuery = "UPDATE processing SET val = " + i + " WHERE field = 'total'";
-            SQLiteCommand command2 = new SQLiteCommand(updateQuery, sqliteCon);
-            command2.ExecuteNonQuery();*/
-
-           
-
-/*
-            string query2 = "SELECT val FROM processing WHERE field = 'solved'";
-            SQLiteCommand command3 = new SQLiteCommand(query2, sqliteCon);
-            SQLiteDataReader reader2 = command3.ExecuteReader();
-            string trueCount = "";
-            foreach (DbDataRecord record in reader2)
-            {
-                trueCount = record[0].ToString();
-            }
-            Console.WriteLine("trueCoiynt " + trueCount);*/
-
-
-
 
 
             for (int j = 1; j <= Convert.ToInt32(i); j++)
@@ -256,14 +233,24 @@ namespace iLearning
 
         private void button3_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Application.Exit();
-            //Close();
+            //System.Windows.Forms.Application.Exit();
+            Form1 form1 = new Form1();
+            form1.Show();
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            createCourse createCourse = new createCourse();
-            createCourse.ShowDialog();
+            if (Program.admin == 2)
+            {
+                usersSeting usersSeting = new usersSeting();
+                usersSeting.ShowDialog();
+            }
+            else
+            {
+                createCourse createCourse = new createCourse();
+                createCourse.ShowDialog();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -298,11 +285,6 @@ namespace iLearning
                     break;
 
 
-
-                // -------------------------------------------------
-                //Program.cod = j;
-
-
                 string query3 = "SELECT type, text FROM L_" + Program.courseName + " WHERE Код = " + j;
                 SQLiteCommand command4 = new SQLiteCommand(query3, sqliteCon);
                 SQLiteDataReader reader3 = command4.ExecuteReader();
@@ -329,8 +311,7 @@ namespace iLearning
                         string query1 = "SELECT type FROM " + Program.courseName + " WHERE Код = " + text;
                         SQLiteCommand command1 = new SQLiteCommand(query1, sqliteCon);
                         SQLiteDataReader reader1 = command1.ExecuteReader();
-                        //string type = "";
-                        //string text = "";
+
                         foreach (DbDataRecord record in reader1)
                         {
                             type = record[0].ToString();                            
@@ -353,13 +334,7 @@ namespace iLearning
 
                         }
                         break;
-
-
                 }
-
-                
-
-
             }
         }
     }
